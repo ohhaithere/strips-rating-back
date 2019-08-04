@@ -38,4 +38,12 @@ public class UserServiceTest {
     assertEquals(savedUser.getName(), user.getName());
   }
 
+  @Test
+  public void get_user_test() {
+    //given:
+    when(userRepository.findById(any(Long.class)))
+            .thenReturn(java.util.Optional.ofNullable(User.builder()
+                    .name("test").build()));
+  }
+
 }
