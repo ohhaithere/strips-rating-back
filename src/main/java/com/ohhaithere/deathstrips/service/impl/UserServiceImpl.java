@@ -16,10 +16,11 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
+  private final UserMapper userMapper;
 
   @Override
   public UserDto saveUser(UserDto user) {
-    UserDto savedUser = UserMapper.mapUserToDto(userRepository.save(UserMapper.mapDtoToUser(user)));
+    UserDto savedUser = userMapper.mapUserToDto(userRepository.save(userMapper.mapDtoToUser(user)));
     return savedUser;
   }
 
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
   public UserDto getUser(Long id) {
     Optional<User> user = userRepository.findById(id);
     if(user.isPresent()) {
-      return UserMapper.mapUserToDto(user.get());
+      return userMapper.mapUserToDto(user.get());
     } else {
       return null;
     }

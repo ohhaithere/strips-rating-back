@@ -8,14 +8,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class KfcRestaurantDto {
 
-  private Long id;
-  private String email;
-  private String phone;
-  private String name;
-  private String password;
+  Long id;
+  String name;
+  String address;
 
 }

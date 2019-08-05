@@ -2,22 +2,24 @@ package com.ohhaithere.deathstrips.mapper;
 
 import com.ohhaithere.deathstrips.domain.User;
 import com.ohhaithere.deathstrips.dto.UserDto;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
+import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Service
 public class UserMapper {
 
-  private static MapperFactory mapperFactory;
+  private final MapperFactory mapperFactory;
 
-  public static User mapDtoToUser(UserDto userDto) {
+  public User mapDtoToUser(UserDto userDto) {
     BoundMapperFacade<UserDto, User> mapperFacade = mapperFactory.getMapperFacade(UserDto.class, User.class);
     User user = mapperFacade.map(userDto);
     return user;
   }
 
-  public static UserDto mapUserToDto(User user) {
+  public UserDto mapUserToDto(User user) {
     BoundMapperFacade<User, UserDto> mapperFacade = mapperFactory.getMapperFacade(User.class, UserDto.class);
     UserDto userDto = mapperFacade.map(user);
     return userDto;
