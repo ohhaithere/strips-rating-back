@@ -17,11 +17,29 @@
     <artifactId>deathstrips</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <spring-batch.version>4.1.2.RELEASE</spring-batch.version>
+        <orika.version>1.5.4</orika.version>
+    </properties>
+
     <dependencies>
         <!-- Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Batch -->
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring-batch.version}</version>
+        </dependency>
+
+        <!-- JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <!-- Lombok -->
@@ -31,17 +49,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JPA -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
         <!-- Orika -->
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
-            <version>1.5.4</version>
+            <version>${orika.version}</version>
         </dependency>
 
         <!-- Starter Test -->
