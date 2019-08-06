@@ -1,5 +1,6 @@
 package com.ohhaithere.deathstrips.service.impl;
 
+import com.ohhaithere.deathstrips.domain.KfcRestaurant;
 import com.ohhaithere.deathstrips.dto.KfcRestaurantDto;
 import com.ohhaithere.deathstrips.mapper.KfcRestaurantMapper;
 import com.ohhaithere.deathstrips.repository.KfcRestaurantRepository;
@@ -23,12 +24,14 @@ public class KfcRestaurantServiceImpl implements KfcRestaurantService {
 
   @Override
   public Boolean deleteRestaurant(KfcRestaurantDto kfcRestaurantDto) {
-    return null;
+    KfcRestaurant restaurant = kfcRestaurantMapper.mapDtoToRestaurant(kfcRestaurantDto);
+    kfcRestaurantRepository.delete(restaurant);
+    return true;
   }
 
   @Override
   public KfcRestaurantDto getRestaurant(Long id) {
-    return null;
+    return kfcRestaurantMapper.mapRestaurantToDto(kfcRestaurantRepository.getOne(id));
   }
 
   @Override
