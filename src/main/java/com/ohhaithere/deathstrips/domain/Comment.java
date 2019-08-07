@@ -12,12 +12,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class KfcRestaurant {
+public class Comment {
 
   @Id
-  Long id;
-  String name;
-  String address;
+  String id;
+  String text;
   String rating;
 
 }
