@@ -1,8 +1,6 @@
 package com.ohhaithere.deathstrips.mapper;
 
-import com.ohhaithere.deathstrips.domain.Achievement;
 import com.ohhaithere.deathstrips.domain.Comment;
-import com.ohhaithere.deathstrips.dto.AchievementDto;
 import com.ohhaithere.deathstrips.dto.CommentDto;
 import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.BoundMapperFacade;
