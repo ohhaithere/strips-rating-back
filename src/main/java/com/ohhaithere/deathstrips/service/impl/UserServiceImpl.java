@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public Boolean deleteUser(User user) {
-    userRepository.delete(user);
+  public Boolean deleteUser(UserDto user) {
+    userRepository.delete(userMapper.mapDtoToUser(user));
     return true;
   }
 

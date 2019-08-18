@@ -5,6 +5,8 @@ import com.ohhaithere.deathstrips.dto.UserDto;
 import com.ohhaithere.deathstrips.mapper.UserMapper;
 import com.ohhaithere.deathstrips.repository.UserRepository;
 import com.ohhaithere.deathstrips.service.impl.UserServiceImpl;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,11 +41,11 @@ public class UserServiceTest {
   }
 
   @Test
-  public void addUserTest() {
+  public void saveUserTest() {
     //given:
     UserDto user = UserDto.builder()
-            .name("test")
-            .build();
+        .name("test")
+        .build();
     //when:
     UserDto savedUser = userService.saveUser(user);
 
@@ -55,8 +57,8 @@ public class UserServiceTest {
   public void getUserTest() {
     //given:
     when(userRepository.findById(any(Long.class)))
-            .thenReturn(java.util.Optional.ofNullable(User.builder()
-                    .name("test").build()));
+        .thenReturn(java.util.Optional.ofNullable(User.builder()
+            .name("test").build()));
     when(userMapper.mapUserToDto(any(User.class))).thenReturn(UserDto.builder()
         .name("test")
         .build());
@@ -69,11 +71,46 @@ public class UserServiceTest {
   }
 
   @Test
-  public void deleteUserTest() {
+  public void notFoundUserTest() {
     //given:
-    when()
+    when(userRepository.findById(any(Long.class)))
+        .thenReturn(java.util.Optional.empty());
+
+    //when
+    UserDto notFoundUser = userService.getUser(1L);
+
+    //then:
+    assertEquals(notFoundUser, null);
   }
 
+  @Test
+  public void deleteUserTest() {
+    //given:
+    UserDto user = UserDto.builder().id(1L).build();
 
+    //when:
+    boolean deleted = userService.deleteUser(user);
 
+    //then:
+    assertEquals(deleted, true);
+  }
+
+  @Test
+  public void getAllUsersTest() {
+    //given
+    User user = User.builder().name("test").build();
+    UserDto userDto = UserDto.builder().name("test").build();
+    List<User> users = new ArrayList<>();
+    List<UserDto> usersDto = new ArrayList<>();
+    users.add(user);
+    usersDto.add(userDto);
+    when(userRepository.findAll()).thenReturn(users);
+    when(userMapper.mapUserToDto(any(User.class))).thenReturn(userDto);
+
+    //when:
+    List<UserDto> allUsers = userService.getAllUsers();
+
+    //then
+    assertEquals(allUsers, usersDto);
+  }
 }

@@ -6,6 +6,8 @@ import com.ohhaithere.deathstrips.mapper.KfcRestaurantMapper;
 import com.ohhaithere.deathstrips.repository.KfcRestaurantRepository;
 import com.ohhaithere.deathstrips.service.KfcRestaurantService;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -31,11 +33,20 @@ public class KfcRestaurantServiceImpl implements KfcRestaurantService {
 
   @Override
   public KfcRestaurantDto getRestaurant(Long id) {
-    return kfcRestaurantMapper.mapRestaurantToDto(kfcRestaurantRepository.getOne(id));
+    Optional<KfcRestaurant> restaurant = kfcRestaurantRepository.findById(id);
+    if(restaurant.isPresent()) {
+      return kfcRestaurantMapper.mapRestaurantToDto(restaurant.get());
+    } else {
+      return null; //TODO: Add 404 exception and handler
+    }
   }
 
   @Override
   public List<KfcRestaurantDto> getRestaurants() {
-    return null;
+    List<KfcRestaurant> restaurants = kfcRestaurantRepository.findAll();
+    List<KfcRestaurantDto> restaurantDtos = restaurants.stream()
+        .map(restaurant -> kfcRestaurantMapper.mapRestaurantToDto(restaurant))
+        .collect(Collectors.toList());
+    return restaurantDtos;
   }
 }
