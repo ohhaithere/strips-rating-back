@@ -31,8 +31,8 @@ public class AchievementServiceImpl implements AchievementService {
   }
 
   @Override
-  public AchievementDto getAchievement(AchievementDto achievement) {
-    Optional<Achievement> foundAchievement = achievementRepository.findById(achievement.getId());
+  public AchievementDto getAchievement(Long id) {
+    Optional<Achievement> foundAchievement = achievementRepository.findById(id);
     if(foundAchievement.isPresent()) {
       return achievementMapper.mapAchievementToDto(foundAchievement.get());
     } else {

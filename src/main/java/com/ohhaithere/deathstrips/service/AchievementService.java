@@ -9,7 +9,7 @@ public interface AchievementService {
 
   Boolean deleteAchievement(AchievementDto achievement);
 
-  AchievementDto getAchievement(AchievementDto achievement);
+  AchievementDto getAchievement(Long id);
 
   List<AchievementDto> getAchievements();
 
