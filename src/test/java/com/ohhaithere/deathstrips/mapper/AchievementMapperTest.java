@@ -17,7 +17,7 @@ public class AchievementMapperTest {
   @Before
   public void setUp() throws Exception {
     mapperFactory = new DefaultMapperFactory.Builder().build();
-    achievementMapper = new AchievementMapper(mapperFactory);
+    achievementMapper = new AchievementMapper();
   }
 
 

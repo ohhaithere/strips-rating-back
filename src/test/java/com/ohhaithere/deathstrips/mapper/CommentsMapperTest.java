@@ -17,7 +17,7 @@ public class CommentsMapperTest {
   @Before
   public void setUp() throws Exception {
     mapperFactory = new DefaultMapperFactory.Builder().build();
-    commentsMapper = new CommentsMapper(mapperFactory);
+    commentsMapper = new CommentsMapper();
   }
 
   @Test

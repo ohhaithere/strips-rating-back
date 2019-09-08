@@ -2,14 +2,15 @@ package com.ohhaithere.deathstrips.mapper;
 
 import com.ohhaithere.deathstrips.domain.CheckIn;
 import com.ohhaithere.deathstrips.dto.CheckInDto;
-import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
+@Service
 public class CheckInMapper {
 
-  private final MapperFactory mapperFactory;
+  private final MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
   public CheckIn mapDtoToCheckIn(CheckInDto dto) {
     BoundMapperFacade<CheckInDto, CheckIn> mapperFacade = mapperFactory.getMapperFacade(CheckInDto.class, CheckIn.class);

@@ -4,10 +4,12 @@ import com.ohhaithere.deathstrips.dto.KfcRestaurantDto;
 import com.ohhaithere.deathstrips.service.KfcRestaurantService;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/restaurants/")
+@RestController
+@RequestMapping("/restaurants/")
 @AllArgsConstructor
 public class KfcRestaurantsController {
 

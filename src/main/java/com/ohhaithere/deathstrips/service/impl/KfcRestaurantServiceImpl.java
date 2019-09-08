@@ -9,8 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Service
 public class KfcRestaurantServiceImpl implements KfcRestaurantService {
 
   private final KfcRestaurantRepository kfcRestaurantRepository;

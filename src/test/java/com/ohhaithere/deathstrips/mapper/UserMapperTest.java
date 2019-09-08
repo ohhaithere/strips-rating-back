@@ -17,7 +17,7 @@ public class UserMapperTest {
   @Before
   public void setUp() {
     mapperFactory = new DefaultMapperFactory.Builder().build();
-    userMapper = new UserMapper(mapperFactory);
+    //userMapper = new UserMapper(mapperFactory);
   }
 
   @Test

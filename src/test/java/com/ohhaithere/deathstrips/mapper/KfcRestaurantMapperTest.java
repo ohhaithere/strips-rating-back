@@ -17,7 +17,7 @@ public class KfcRestaurantMapperTest {
   @Before
   public void setUp() {
     mapperFactory = new DefaultMapperFactory.Builder().build();
-    kfcRestaurantMapper = new KfcRestaurantMapper(mapperFactory);
+   // kfcRestaurantMapper = new KfcRestaurantMapper(mapperFactory);
   }
 
   @Test

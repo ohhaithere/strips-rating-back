@@ -2,14 +2,15 @@ package com.ohhaithere.deathstrips.mapper;
 
 import com.ohhaithere.deathstrips.domain.Achievement;
 import com.ohhaithere.deathstrips.dto.AchievementDto;
-import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
+@Service
 public class AchievementMapper {
 
-  private final MapperFactory mapperFactory;
+  private final MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
   public Achievement mapDtoToAchievement(AchievementDto achievementDto) {
     BoundMapperFacade<AchievementDto, Achievement> mapperFacade = mapperFactory.getMapperFacade(AchievementDto.class, Achievement.class);
